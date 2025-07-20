@@ -1,4 +1,3 @@
-# AI_USAGE.md
 
 ## 🤖 Registro de Apoio de Inteligência Artificial (ChatGPT)
 
