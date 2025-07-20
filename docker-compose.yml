@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  banco-management-service:
+    build: .
+    container_name: banco-management-service
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+    restart: always
