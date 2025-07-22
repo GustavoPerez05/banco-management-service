@@ -1,5 +1,4 @@
 
-
 ## 📌 Progresso do Projeto
 
 ### 🗓️ Dia 1 — Setup do Projeto (19/07/2025)
@@ -73,3 +72,33 @@
   - Testes de CRUD finalizados com sucesso no ambiente isolado
 - Commit final do dia realizado com a mensagem:
   - `feat: endpoints PUT/GET por ID + DTOs aplicados + testes únitarios centralizados`
+
+---
+
+### 🗓️ Dia 4 — Tratamento de Erros Amigáveis + Docker Estável (22/07/2025)
+- Revisão completa da arquitetura REST e dos retornos HTTP.
+- Implementação das exceções customizadas:
+  - `ResourceNotFoundException`
+  - `BadRequestException`
+- Remoção do uso de `@ControllerAdvice` e `GlobalExceptionHandler` devido a conflitos com o Swagger.
+- Adoção de uma nova estratégia para tratamento de erros:
+  - Mensagens amigáveis retornadas diretamente nos métodos dos endpoints
+  - Padrão adotado: `{ "error": "mensagem descritiva" }`
+- Adaptação de todos os endpoints que podem retornar erro:
+  - `GET /employees/{id}`
+  - `PUT /employees/{id}`
+  - `DELETE /employees/{id}`
+- Verificação e ajuste do `EmployeeService` para lançar exceções customizadas sempre que necessário.
+- Garantia de compatibilidade com o Swagger UI sem comprometer os retornos RESTful.
+- Testes realizados via Swagger simulando erros:
+  - Erro 400: envio de dados inválidos via `POST`
+  - Erro 404: consulta ou exclusão com ID inexistente
+  - Exemplo de retorno testado: `GET /employees/999` → `{ "error": "Employee with ID 999 not found" }`
+- Validação da execução via Docker com os comandos:
+  - `docker build -t banco-management-service .`
+  - `docker run -p 8080:8080 banco-management-service`
+- Abertura da documentação Swagger pela URL:
+  - `http://localhost:8080/swagger-ui/index.html`
+- Feedback positivo recebido de colega que já atua no Banco, destacando a clareza e consistência das mensagens de erro.
+- Commit final do dia realizado com a mensagem:
+  - `feat: tratamento de erros com mensagens amigáveis + exceções customizadas aplicadas nos endpoints`
