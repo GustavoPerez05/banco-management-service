@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: br.com.banco.managementservice.application.service.EmployeeServiceTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.631 s -- in br.com.banco.managementservice.application.service.EmployeeServiceTest
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.806 s <<< FAILURE! -- in br.com.banco.managementservice.application.service.EmployeeServiceTest
+br.com.banco.managementservice.application.service.EmployeeServiceTest.testDeleteEmployee -- Time elapsed: 0.019 s <<< ERROR!
+br.com.banco.managementservice.domain.exception.ResourceNotFoundException: Funcionário com ID 1 não encontrado para exclusão.
+	at br.com.banco.managementservice.application.service.EmployeeService.delete(EmployeeService.java:31)
+	at br.com.banco.managementservice.application.service.EmployeeServiceTest.testDeleteEmployee(EmployeeServiceTest.java:62)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

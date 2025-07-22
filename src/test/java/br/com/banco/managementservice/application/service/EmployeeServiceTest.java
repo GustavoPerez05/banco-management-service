@@ -10,7 +10,6 @@ import br.com.banco.managementservice.domain.model.Employee;
 import br.com.banco.managementservice.domain.repository.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +29,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void testSaveEmployee() {
+    void shouldSaveEmployeeSuccessfully() {
         Employee employee = new Employee("Gustavo", "gustavo@banco.com.br", "TI");
         when(repository.save(employee)).thenReturn(employee);
 
@@ -42,7 +41,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void testFindAllEmployees() {
+    void shouldListAllEmployees() {
         List<Employee> list = Arrays.asList(
                 new Employee("Gustavo", "gustavo@banco.com.br", "TI"),
                 new Employee("Renato", "renato@banco.com.br", "Financeiro")
@@ -56,12 +55,12 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void testDeleteEmployee() {
+    void shouldDeleteEmployeeById() {
         Long id = 1L;
+        when(repository.existsById(id)).thenReturn(true);
 
         service.delete(id);
 
         verify(repository, times(1)).deleteById(id);
     }
 }
-

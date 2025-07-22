@@ -14,4 +14,6 @@ public interface EmployeeRepository {
     Optional<Employee> findById(Long id);
 
     void deleteById(Long id);
+
+    boolean existsById(Long id);
 }

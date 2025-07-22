@@ -6,6 +6,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import br.com.banco.managementservice.application.dto.CreateEmployeeRequest;
+import br.com.banco.managementservice.application.dto.UpdateEmployeeRequest;
+
 
 import java.util.List;
 
@@ -20,15 +23,40 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> create(@Valid @RequestBody Employee employee) {
+    public ResponseEntity<Employee> create(@Valid @RequestBody CreateEmployeeRequest request) {
+        Employee employee = new Employee(
+            request.getName(),
+            request.getEmail(),
+            request.getDepartment()
+        );
         Employee saved = service.save(employee);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
+
 
     @GetMapping
     public ResponseEntity<List<Employee>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        return service.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @Valid @RequestBody UpdateEmployeeRequest request) {
+        Employee updated = new Employee(
+            request.getName(),
+            request.getEmail(),
+            request.getDepartment()
+        );
+        
+    return ResponseEntity.ok(service.update(id, updated));
+}
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
