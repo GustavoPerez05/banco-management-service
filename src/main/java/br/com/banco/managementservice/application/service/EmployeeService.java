@@ -1,5 +1,6 @@
 package br.com.banco.managementservice.application.service;
 
+import br.com.banco.managementservice.domain.exception.ResourceNotFoundException;
 import br.com.banco.managementservice.domain.model.Employee;
 import br.com.banco.managementservice.domain.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
@@ -36,10 +37,13 @@ public class EmployeeService {
                 existing.setDepartment(updatedEmployee.getDepartment());
                 return repository.save(existing);
             })
-            .orElseThrow(() -> new RuntimeException("Funcionário com ID " + id + " não encontrado."));
+            .orElseThrow(() -> new ResourceNotFoundException("Employee with ID " + id + " not found"));
     }
 
     public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new ResourceNotFoundException("Employee with ID " + id + " not found");
+        }
         repository.deleteById(id);
     }
 }

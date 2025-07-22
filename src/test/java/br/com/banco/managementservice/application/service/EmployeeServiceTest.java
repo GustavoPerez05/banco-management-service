@@ -2,7 +2,8 @@
 // Segmento de Testes (JUnit 5 + Mockito):
 // 1. Salvar Funcionário
 // 2. Listar Todos os Funcionários
-// 3. Remover Funcionário
+// 3. Update de Informações dos Funcrionários
+// 4. Remover Funcionário
 
 package br.com.banco.managementservice.application.service;
 

@@ -4,6 +4,8 @@ br\com\banco\managementservice\domain\model\Employee.class
 br\com\banco\managementservice\adapters\in\rest\EmployeeController.class
 br\com\banco\managementservice\adapters\out\persistence\SpringEmployeeRepository.class
 br\com\banco\managementservice\BancoManagementServiceApplication.class
+br\com\banco\managementservice\application\dto\UpdateEmployeeRequest.class
 br\com\banco\managementservice\adapters\out\persistence\EmployeeRepositoryAdapter.class
 br\com\banco\managementservice\domain\exception\ResourceNotFoundException.class
+br\com\banco\managementservice\application\dto\CreateEmployeeRequest.class
 br\com\banco\managementservice\config\GlobalExceptionHandler.class
