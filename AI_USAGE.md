@@ -39,6 +39,26 @@ Este documento tem como objetivo descrever **como** e **em quais momentos** a in
 
 ---
 
+### 📆 Dia 3 — Melhorias nos Endpoints + Docker + DTOs + Testes (22/07/2025)
+
+- **Suporte na criação dos novos endpoints**:
+  - Estruturação do método `GET /employees/{id}` com uso de `Optional` e `ResponseEntity`.
+  - Implementação do `PUT /employees/{id}`, com atualização de atributos.
+  - Ajustes no `DELETE /employees/{id}` para validar existência antes de exclusão.
+- **Criação dos DTOs personalizados**:
+  - Geração de `CreateEmployeeRequest` e `UpdateEmployeeRequest`.
+  - Modificação do `EmployeeController` para aceitar os DTOs no lugar da entidade diretamente.
+  - Redução de exposição do campo `id` no Swagger.
+- **Verificações com Docker**:
+  - Testes realizados via imagem Docker para garantir consistência em ambiente isolado.
+  - Auxílio na identificação e solução de problemas ao rodar múltiplos containers ou builds desatualizados.
+- **Centralização dos testes unitários**:
+  - Organização final dos testes do `EmployeeService` para manter cobertura e clareza.
+- **Suporte geral e correção de erros**:
+  - Diagnóstico de falhas no Swagger UI (`/v3/api-docs`), tratamento de `Optional`, erros de build, entre outros.
+
+---
+
 ### 🔒 Observações Finais
 
 A IA atuou como **parceira de apoio técnico**, não realizando o projeto de forma autônoma, mas contribuindo com:

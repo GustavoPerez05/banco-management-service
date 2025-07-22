@@ -56,3 +56,20 @@
 - Configuração do **docker-compose.yml** para facilitar a orquestração futura.
 - Commit do dia realizado com a mensagem:
   - `feat: crud + testes unitários + docker configurado com sucesso`
+
+---
+
+### 🗓️ Dia 3 — Melhorias nos Endpoints + Docker + DTOs + Testes (21/07/2025)
+- Implementação do endpoint `GET /employees/{id}`, com retorno 404 para ID inexistente.
+- Criação e validação do endpoint `PUT /employees/{id}` para atualização de dados.
+- Validação do endpoint `DELETE /employees/{id}` com tratamento para casos inexistentes.
+- Refatoração da estrutura para adoção de **DTOs (Data Transfer Objects)**:
+  - Criação dos arquivos `CreateEmployeeRequest` e `UpdateEmployeeRequest`
+  - Adaptação do `EmployeeController` para uso dos DTOs, removendo a exposição do campo `id` no Swagger
+- Novos testes unitários criados e centralizados para o `EmployeeService`
+- Verificações via Docker para garantir:
+  - Execução completa da aplicação
+  - Swagger funcionando com todos os endpoints esperados
+  - Testes de CRUD finalizados com sucesso no ambiente isolado
+- Commit final do dia realizado com a mensagem:
+  - `feat: endpoints PUT/GET por ID + DTOs aplicados + testes únitarios centralizados`
