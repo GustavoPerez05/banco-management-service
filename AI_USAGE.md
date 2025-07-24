@@ -97,6 +97,37 @@ Este documento tem como objetivo descrever **como** e **em quais momentos** a in
   - Alinhamento com o padrão das atualizações anteriores no `README.md` e `AI_USAGE.md`
 
 ---
+### 📆 Dia 5 — Encerramento e Validação Final (23/07/2025)
+
+- **Planejamento do encerramento do projeto com apoio da IA**:
+  - Definição de uma checklist final de entrega: testes, documentação, execução via Docker, cobertura de endpoints, commit semântico final.
+
+- **Testes manuais validados com apoio da IA**:
+  - Identificação e simulação de cenários 400 e 404 diretamente via Swagger.
+  - Confirmação dos retornos padronizados `{ "error": "..." }` como esperado.
+
+- **Análise e execução dos testes automatizados**:
+  - IA revisou o arquivo `EmployeeServiceTest` completo e sugeriu:
+    - Teste para atualização com ID inexistente
+    - Teste para atualização com ID válido
+  - Após inserção, foi realizada nova execução com `./mvnw test`, validando:
+    - Todos os testes passaram com `BUILD SUCCESS`
+    - Cobertura completa do fluxo de serviço
+
+- **Documentação orientada por IA**:
+  - Geração completa da seção “Instruções para execução e testes” com:
+    - Execução local via `mvn spring-boot:run`
+    - Execução via Docker (`build` + `run`)
+    - Comandos `curl` para todos os endpoints com exemplos realistas
+    - Formatação final das seções do `README.md`
+
+- **Validação final do projeto**:
+  - Revisão orientada pela IA sobre pré-requisitos, estrutura de pastas, fluxo RESTful e consistência das mensagens.
+  - Sugestão de commit final:
+    - `test: testes finais validados com sucesso para encerramento do projeto`
+
+
+---
 
 ### 🔒 Observações Finais
 

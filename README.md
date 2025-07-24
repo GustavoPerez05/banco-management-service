@@ -1,5 +1,164 @@
+### ***⚙️ Instruções para Execução Local (Método Maven)***
 
-## 📌 Progresso do Projeto
+### 📦 Pré-requisitos:
+- Java 17 ou superior
+- Maven 3.8+
+- Git instalado
+
+### ▶️ **1º Passo:** Compilação do Projeto
+
+```bash
+./mvnw clean package
+```
+
+### 🚀 **2º Passo:** Execução da API 
+```bash
+./mvnw spring-boot:run
+```
+
+### 🌐 **3º Passo:** Local de Acesso a API  
+```bash
+http://localhost:8080/swagger-ui/index.html
+```
+---
+### ***🐳 Instruções para Execução via Docker***
+
+### 📦 Pré-requisitos:
+- **Docker instalado**  
+  - Versão recomendada: Docker Engine 20.10+  
+  - Site oficial: [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
+- **Permissão para executar comandos Docker**  
+  - No Windows: use o Docker Desktop com WSL 2 habilitado  
+  - No Linux/macOS: o usuário deve estar no grupo `docker` ou usar `sudo` nos comandos
+
+- **Porta 8080 disponível** no host  
+  - A aplicação será exposta em `http://localhost:8080`
+
+### ▶️ **1º Passo:** Build da Imagem (Compilação)
+
+```bash
+docker build -t banco-management-service .
+```
+
+### 🚀 2º Passo: Execução do Container
+```bash
+docker run -p 8080:8080 banco-management-service
+```
+
+### 🌐 3º Passo: Local de Acesso a API  
+```bash
+http://localhost:8080/swagger-ui/index.html
+```
+---
+### 🧪 ***Como Rodar os Testes***
+
+Para rodar os testes unitários com `JUnit 5` e `Mockito`, utilize o seguinte comando a partir da raiz do projeto:
+
+```bash
+`./mvnw test`
+```
+### ✅ Resultado Esperado:
+```bash
+BUILD SUCCESS
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+```
+### 🧩 Cobertura de Testes
+**Os testes implementados cobrem os principais fluxos da classe EmployeeService:**
+
+- `Salvar funcionário`
+
+- `Listar todos os funcionários`
+
+- `Atualizar funcionário com ID existente`
+
+- `Tentar atualizar funcionário inexistente (erro)`
+
+- `Remover funcionário por ID`
+
+**Todos os testes foram validados com sucesso e não requerem banco de dados externo (Uso do H2 BD).**
+---
+### 📬 Exemplos de Chamadas à API (via `curl`)
+
+### 📩 Criar um novo funcionário (POST)
+
+```bash
+curl -X POST http://localhost:8080/employees \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Gustavo Perez",
+  "email": "gustavo@banco.com.br",
+  "department": "Tecnologia"
+}'
+```
+### 🔍 Listar todos os funcionários (GET)
+
+```bash 
+curl -X GET http://localhost:8080/employees
+```
+### 🔎 Buscar funcionário por ID (GET)
+```bash 
+curl -X GET http://localhost:8080/employees/1
+```
+### 📝Atualizar um funcionário 📩
+```bash 
+curl -X PUT http://localhost:8080/employees/1 \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Gustavo Perez Atualizado",
+  "email": "joao@empresa.com",
+  "department": "Arquitetura de Dados"
+}'
+```
+### 🗑️ Remover um funcionário (DELETE)
+```bash
+curl -X DELETE http://localhost:8080/employees/1
+```
+### ✅ Code 200/201 (Sucesso em Ação)
+***Resposta Esperada Após Qualquer Ação Correta (Exemplo):***
+
+```bash
+{
+  "id": 1, 
+  "name": "Gustavo Perez",
+  "email": "gustavo@banco.com.br",
+  "department": "Arquitetura de Dados"
+}
+```
+### ⚠️ Erro 404 (ID inexistente)
+```bash
+curl -X GET http://localhost:8080/employees/999
+```
+***Resposta Esperada:***
+```bash
+{
+  "error": "Employee with ID 999 not found"
+}
+```
+
+### 💥 Erro 400 (Tipagem Inválida)
+```bash
+curl -X 'POST' \
+  'http://localhost:8080/employees' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "string",
+  "email": "string",
+  "department": "string"
+}'
+```
+***Resposta Esperada:***
+```bash
+{
+  "timestamp": "2025-07-24T05:07:55.164+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/employees"
+}
+```
+---
+### 📌 ***Progresso do Projeto***
 
 ### 🗓️ Dia 1 — Setup do Projeto (19/07/2025)
 - Leitura completa do enunciado e alinhamento da estratégia com apoio da IA.
@@ -21,7 +180,9 @@
   - Springdoc OpenAPI (adicionada manualmente)
 - Build inicial rodado com sucesso usando Maven Wrapper.
 - Commit inicial realizado com a mensagem:
-  - `feat: estrutura inicial gerada com ajuda da IA`
+```bash
+"feat: estrutura inicial gerada com ajuda da IA"
+  ```
 
 ---
 
@@ -54,7 +215,9 @@
   - Verificação do Swagger em `http://localhost:8080/swagger-ui.html`
 - Configuração do **docker-compose.yml** para facilitar a orquestração futura.
 - Commit do dia realizado com a mensagem:
-  - `feat: crud + testes unitários + docker configurado com sucesso`
+```bash
+"feat: crud + testes unitários + docker configurado com sucesso"
+```
 
 ---
 
@@ -71,7 +234,9 @@
   - Swagger funcionando com todos os endpoints esperados
   - Testes de CRUD finalizados com sucesso no ambiente isolado
 - Commit final do dia realizado com a mensagem:
-  - `feat: endpoints PUT/GET por ID + DTOs aplicados + testes únitarios centralizados`
+```bash
+"feat: endpoints PUT/GET por ID + DTOs aplicados + testes únitarios centralizados"
+```
 
 ---
 
@@ -101,4 +266,33 @@
   - `http://localhost:8080/swagger-ui/index.html`
 - Feedback positivo recebido de colega que já atua no Banco, destacando a clareza e consistência das mensagens de erro.
 - Commit final do dia realizado com a mensagem:
-  - `feat: tratamento de erros com mensagens amigáveis + exceções customizadas aplicadas nos endpoints`
+```bash
+"feat: tratamento de erros com mensagens amigáveis + exceções customizadas aplicadas nos endpoints"
+```
+---
+### 🗓️ Dia 5 — Encerramento do Projeto + Validação Final (23/07/2025)
+- Retomada do projeto para execução de testes finais e revisão completa da entrega.
+- Testes manuais realizados com sucesso para todos os endpoints (`GET`, `POST`, `PUT`, `DELETE`) e seus respectivos fluxos de erro:
+  - `400 Bad Request` com validações de campos obrigatórios e formatos incorretos
+  - `404 Not Found` ao consultar, atualizar ou excluir funcionários inexistentes
+- Verificação do comportamento do Swagger UI:
+  - Campos apresentados corretamente
+  - Documentação acessível e navegável em `http://localhost:8080/swagger-ui/index.html`
+- Docker testado com sucesso:
+  - Build e execução funcionais utilizando `docker build` e `docker run`
+  - API acessível normalmente via container
+- Testes unitários atualizados e executados com sucesso:
+  - Total de 5 testes criados para a classe `EmployeeServiceTest`
+  - Cobertura de:
+    - Salvamento de funcionário
+    - Listagem geral
+    - Atualização (ID válido e inválido)
+    - Exclusão
+  - Utilização de `JUnit 5` e `Mockito`, sem dependência de ambiente externo
+- Decisão consciente de não utilizar `Jacoco`, por já possuir cobertura sólida e validada nos testes unitários
+- Projeto considerado **100% funcional, testado e pronto para entrega**
+- Commit final do projeto realizado com a mensagem:
+```bash
+"git commit -m "test: validação e complementação final dos testes unitários do EmployeeService + Encerramento" "
+  ```
+---
