@@ -5,7 +5,7 @@ C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-ser
 C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\application\dto\UpdateEmployeeRequest.java
 C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\application\service\EmployeeService.java
 C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\BancoManagementServiceApplication.java
-C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\config\GlobalExceptionHandler.java
+C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\domain\exception\BadRequestException.java
 C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\domain\exception\ResourceNotFoundException.java
 C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\domain\model\Employee.java
 C:\Users\gugap\OneDrive\Área de Trabalho\managementservice\banco-management-service\src\main\java\br\com\banco\managementservice\domain\repository\EmployeeRepository.java

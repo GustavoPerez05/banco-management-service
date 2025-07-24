@@ -64,4 +64,31 @@ class EmployeeServiceTest {
 
         verify(repository, times(1)).deleteById(id);
     }
+
+    @Test
+    void shouldUpdateEmployeeIfExists() {
+        Long id = 1L;
+        Employee existing = new Employee("João", "joao@banco.com", "TI");
+        Employee updated = new Employee("João Silva", "joao@banco.com", "RH");
+
+        when(repository.findById(id)).thenReturn(java.util.Optional.of(existing));
+        when(repository.save(existing)).thenReturn(existing);
+
+    Employee result = service.update(id, updated);
+
+        assertEquals("João Silva", result.getName());
+        assertEquals("RH", result.getDepartment());
+        verify(repository, times(1)).findById(id);
+        verify(repository, times(1)).save(existing);
+    }
+    @Test
+    void shouldThrowWhenUpdatingNonExistentEmployee() {
+        Long id = 99L;
+        Employee updated = new Employee("Carlos", "carlos@banco.com", "TI");
+
+        when(repository.findById(id)).thenReturn(java.util.Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> service.update(id, updated));
+        verify(repository, times(1)).findById(id);
+    }
 }
