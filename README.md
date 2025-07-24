@@ -56,7 +56,7 @@ http://localhost:8080/swagger-ui/index.html
 Para rodar os testes unitários com `JUnit 5` e `Mockito`, utilize o seguinte comando a partir da raiz do projeto:
 
 ```bash
-`./mvnw test`
+./mvnw test
 ```
 ### ✅ Resultado Esperado:
 ```bash
@@ -76,7 +76,8 @@ Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
 
 - `Remover funcionário por ID`
 
-**Todos os testes foram validados com sucesso e não requerem banco de dados externo (Uso do H2 BD).**
+***Todos os testes foram validados com sucesso e não requerem banco de dados externo (Uso do H2 BD).***
+
 ---
 ### 📬 Exemplos de Chamadas à API (via `curl`)
 
