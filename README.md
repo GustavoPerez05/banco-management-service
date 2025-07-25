@@ -1,6 +1,6 @@
 ### ***⚙️ Instruções para Execução Local (Método Maven)***
 
-### 📦 Pré-requisitos:
+ 📦 Pré-requisitos:
 - Java 17 ou superior
 - Maven 3.8+
 - Git instalado
@@ -23,7 +23,7 @@ http://localhost:8080/swagger-ui/index.html
 ---
 ### ***🐳 Instruções para Execução via Docker***
 
-### 📦 Pré-requisitos:
+📦 Pré-requisitos:
 - **Docker instalado**  
   - Versão recomendada: Docker Engine 20.10+  
   - Site oficial: [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
@@ -58,11 +58,13 @@ Para rodar os testes unitários com `JUnit 5` e `Mockito`, utilize o seguinte co
 ```bash
 ./mvnw test
 ```
-### ✅ Resultado Esperado:
+***Resultado Esperado:***
 ```bash
 BUILD SUCCESS
 Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
 ```
+---
+
 ### 🧩 Cobertura de Testes
 **Os testes implementados cobrem os principais fluxos da classe EmployeeService:**
 
@@ -294,6 +296,6 @@ curl -X 'POST' \
 - Projeto considerado **100% funcional, testado e pronto para entrega**
 - Commit final do projeto realizado com a mensagem:
 ```bash
-"git commit -m "test: validação e complementação final dos testes unitários do EmployeeService + Encerramento" "
+"test: validação e complementação final dos testes unitários do EmployeeService + Encerramento" 
   ```
 ---
